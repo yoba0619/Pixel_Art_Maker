@@ -14,25 +14,25 @@ submitButton.setAttribute('onclick', 'makeGrid()'); // adding 'onclick' attribut
 types[3].setAttribute('value', '#252525') // adding the 'value' attribute so we can access color. Also, putting a placeholder color
 var color = types[3].value; //getting the value for the current color
 
-function makeGrid() {
 
-    function respondToTheClick(evt) {
-        //this function re-assign the color to match the one that was chosen and color each clicked cell
-        color = types[3].value; 
-        evt.target.style.backgroundColor = color;
-    }
+function respondToTheClick(evt) {
+    //this function re-assign the color to match the one that was chosen and color each clicked cell
+    color = types[3].value; 
+    evt.target.style.backgroundColor = color;
+}
 
-    function createGrid(){
-        //this function create the grid by adding rows then appending cells to them
-        for(var i = 0; i < height; i++){
-            var grid = document.createElement('tr');
-            for(var j = 0; j < width; j++){
-                grid.appendChild(document.createElement('td')).addEventListener('click', respondToTheClick);
-            }
-        canvas.appendChild(grid);
+function createGrid(){
+     //this function create the grid by adding rows then appending cells to them
+    for(var i = 0; i < height; i++){
+        var grid = document.createElement('tr');
+        for(var j = 0; j < width; j++){
+            grid.appendChild(document.createElement('td')).addEventListener('click', respondToTheClick);
         }
+        canvas.appendChild(grid);
     }
+}
 
+function makeGrid() {
     height = document.querySelector('#inputHeight').value;
     width = document.querySelector('#inputWidth').value;
     if(!canvas.hasChildNodes()){ //checks if the pixel canvas doesn't have child nodes. In case it doesn't a new one will be formed
